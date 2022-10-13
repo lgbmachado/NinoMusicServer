@@ -706,36 +706,112 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="NinoMusicServer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="582" height="379"/>
+                        <rect key="frame" x="0.0" y="0.0" width="999" height="379"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="lrH-0U-7BS">
-                                <rect key="frame" x="5" y="344" width="572" height="30"/>
+                                <rect key="frame" x="5" y="344" width="989" height="30"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6HM-qe-Ku7">
                                         <rect key="frame" x="-2" y="-2" width="119" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="105" id="A93-B1-8c0"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="105" id="AQj-Br-wLM"/>
                                         </constraints>
                                         <buttonCell key="cell" type="push" title="Abrir Diretório" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="T4e-6o-WXY">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="opnDirClick:" target="XfG-lQ-9wD" id="Hqm-nu-6Up"/>
+                                            <action selector="openDirClick:" target="XfG-lQ-9wD" id="hiu-EB-vV4"/>
                                         </connections>
                                     </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qZa-iM-GAR" userLabel="Btn Play Pause Music">
+                                        <rect key="frame" x="173" y="-2" width="119" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="105" id="YQJ-A8-nzI"/>
+                                            <constraint firstAttribute="width" constant="105" id="dWi-ic-nFI"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarPlayPauseTemplate" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mZK-SX-dQO">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="playPauseMusicClick:" target="XfG-lQ-9wD" id="gLw-QP-l3y"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8hn-Bn-Gyb">
+                                        <rect key="frame" x="108" y="-2" width="74" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="pzR-hf-8Xr"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarRewindTemplate" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a3X-ja-msU">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gpY-iG-Ds0">
+                                        <rect key="frame" x="283" y="-2" width="69" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="55" id="aqb-mo-aST"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarRecordStopTemplate" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MSg-ZA-KmB">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="stopMusicClick:" target="XfG-lQ-9wD" id="uFm-06-0le"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="G3K-3a-w5f">
+                                        <rect key="frame" x="343" y="-2" width="69" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="55" id="LB3-K2-Fek"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarFastForwardTemplate" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dpa-sw-nmm">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <levelIndicator verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EAl-Z9-Nda">
+                                        <rect key="frame" x="415" y="17" width="500" height="12"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="PED-9a-dDO"/>
+                                            <constraint firstAttribute="width" constant="500" id="gdD-0C-9PF"/>
+                                        </constraints>
+                                        <levelIndicatorCell key="cell" alignment="left" maxValue="160" tickMarkPosition="above" id="e3A-kd-aqh"/>
+                                    </levelIndicator>
+                                    <levelIndicator verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GM0-0S-iLK">
+                                        <rect key="frame" x="415" y="-1" width="500" height="12"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="H96-fT-xbX"/>
+                                            <constraint firstAttribute="width" constant="500" id="XSe-Jw-fdW"/>
+                                        </constraints>
+                                        <levelIndicatorCell key="cell" alignment="left" maxValue="160" tickMarkPosition="above" id="kvc-ep-6sn"/>
+                                    </levelIndicator>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="EAl-Z9-Nda" firstAttribute="top" secondItem="lrH-0U-7BS" secondAttribute="top" constant="1" id="385-tU-IxY"/>
+                                    <constraint firstItem="EAl-Z9-Nda" firstAttribute="leading" secondItem="G3K-3a-w5f" secondAttribute="trailing" constant="10" id="5sP-Nv-40i"/>
+                                    <constraint firstItem="qZa-iM-GAR" firstAttribute="leading" secondItem="8hn-Bn-Gyb" secondAttribute="trailing" constant="5" id="9xs-mx-GhE"/>
+                                    <constraint firstItem="8hn-Bn-Gyb" firstAttribute="leading" secondItem="6HM-qe-Ku7" secondAttribute="trailing" constant="5" id="Amv-qt-uLY"/>
+                                    <constraint firstItem="GM0-0S-iLK" firstAttribute="leading" secondItem="G3K-3a-w5f" secondAttribute="trailing" constant="10" id="GtC-Xv-gbW"/>
                                     <constraint firstItem="6HM-qe-Ku7" firstAttribute="leading" secondItem="lrH-0U-7BS" secondAttribute="leading" constant="5" id="IIf-gc-4sL"/>
                                     <constraint firstItem="6HM-qe-Ku7" firstAttribute="top" secondItem="lrH-0U-7BS" secondAttribute="top" constant="5" id="KWm-Z0-78q"/>
+                                    <constraint firstItem="gpY-iG-Ds0" firstAttribute="top" secondItem="lrH-0U-7BS" secondAttribute="top" constant="5" id="SPz-1M-Hjq"/>
+                                    <constraint firstItem="G3K-3a-w5f" firstAttribute="top" secondItem="lrH-0U-7BS" secondAttribute="top" constant="5" id="T8n-en-znA"/>
+                                    <constraint firstItem="gpY-iG-Ds0" firstAttribute="leading" secondItem="qZa-iM-GAR" secondAttribute="trailing" constant="5" id="WRC-Bw-abK"/>
+                                    <constraint firstAttribute="bottom" secondItem="GM0-0S-iLK" secondAttribute="bottom" constant="1" id="bR1-KB-ryi"/>
+                                    <constraint firstItem="G3K-3a-w5f" firstAttribute="leading" secondItem="gpY-iG-Ds0" secondAttribute="trailing" constant="5" id="e9M-ZZ-CCf"/>
+                                    <constraint firstItem="qZa-iM-GAR" firstAttribute="top" secondItem="lrH-0U-7BS" secondAttribute="top" constant="5" id="hzg-qX-vGN"/>
+                                    <constraint firstItem="8hn-Bn-Gyb" firstAttribute="top" secondItem="lrH-0U-7BS" secondAttribute="top" constant="5" id="ita-4F-k5V"/>
                                     <constraint firstAttribute="bottom" secondItem="6HM-qe-Ku7" secondAttribute="bottom" constant="5" id="vJj-hW-4R5"/>
                                 </constraints>
                             </customView>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="17" horizontalPageScroll="10" verticalLineScroll="17" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIC-sX-yih">
-                                <rect key="frame" x="4" y="5" width="573" height="334"/>
+                                <rect key="frame" x="4" y="5" width="990" height="334"/>
                                 <clipView key="contentView" id="w0z-A1-0Pr">
-                                    <rect key="frame" x="1" y="1" width="571" height="317"/>
+                                    <rect key="frame" x="1" y="1" width="988" height="317"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="e7L-un-ifV" viewBased="YES" id="f57-db-XgW">
@@ -974,7 +1050,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="tcY-CH-pfZ">
-                                    <rect key="frame" x="1" y="318" width="571" height="15"/>
+                                    <rect key="frame" x="1" y="318" width="988" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="DLU-Hd-uHK">
@@ -998,12 +1074,28 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnNextMusic" destination="G3K-3a-w5f" id="omM-UP-q55"/>
+                        <outlet property="btnPlayPauseMusic" destination="qZa-iM-GAR" id="2TG-13-yfx"/>
+                        <outlet property="btnPrevMusic" destination="8hn-Bn-Gyb" id="rde-Cu-zVJ"/>
+                        <outlet property="btnStopMusic" destination="gpY-iG-Ds0" id="MPC-Wa-LFn"/>
+                        <outlet property="leftMeter" destination="EAl-Z9-Nda" id="H3z-Go-Wcu"/>
+                        <outlet property="rightMeter" destination="GM0-0S-iLK" id="A7P-yO-NO9"/>
                         <outlet property="tableView" destination="f57-db-XgW" id="dng-t2-axc"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <buttonCell type="push" bezelStyle="rounded" image="NSTouchBarPlayPauseTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mXl-qD-SgF">
+                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                    <font key="font" metaFont="system"/>
+                </buttonCell>
             </objects>
-            <point key="canvasLocation" x="141" y="724.5"/>
+            <point key="canvasLocation" x="349.5" y="724.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSTouchBarFastForwardTemplate" width="19" height="12"/>
+        <image name="NSTouchBarPlayPauseTemplate" width="23" height="13"/>
+        <image name="NSTouchBarRecordStopTemplate" width="14" height="13"/>
+        <image name="NSTouchBarRewindTemplate" width="19" height="12"/>
+    </resources>
 </document>
