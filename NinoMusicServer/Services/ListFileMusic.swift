@@ -32,29 +32,31 @@ class ListFileMusic {
                 if let enumFiles = FileManager.default.enumerator(at: urlDir, includingPropertiesForKeys: [.isRegularFileKey], options: [.skipsHiddenFiles, .skipsPackageDescendants]) {
                     for case let fileURL as URL in enumFiles {
                         if fileURL.pathExtension.uppercased() == "MP3" {
-                            do {
-                                let id3Tag = try id3TagEditor.read(from: fileURL.path)
-                                
-                                let artist = ((id3Tag?.frames[.artist] as? ID3FrameWithStringContent)?.content ?? "") as String
-                                let album = ((id3Tag?.frames[ .album] as? ID3FrameWithStringContent)?.content ?? "") as String
-                                let year = ((id3Tag?.frames[.recordingYear] as? ID3FrameWithIntegerContent)?.value ?? 0) as Int
-                                let track = ((id3Tag?.frames[.trackPosition] as? ID3FramePartOfTotal)?.part ?? 0) as Int
-                                let musicTitle = ((id3Tag?.frames[.title] as? ID3FrameWithStringContent)?.content ?? "") as String
-                                let genre = ((id3Tag?.frames[.genre] as? ID3FrameGenre)?.description ?? "") as String
-                                let filePath = fileURL.absoluteString
-                                
-                                if self.musicDb.AddMusic(filePath: filePath,
-                                                         musicTitle: musicTitle,
-                                                         artist: artist,
-                                                         album: album,
-                                                         year: year,
-                                                         track: track,
-                                                         genre: genre) {
-                                    count += 1
+                            if !self.musicDb.musicExists(filePath: fileURL.absoluteString) {
+                                do {
+                                    let id3Tag = try id3TagEditor.read(from: fileURL.path)
+                                    
+                                    let artist = ((id3Tag?.frames[.artist] as? ID3FrameWithStringContent)?.content ?? "") as String
+                                    let album = ((id3Tag?.frames[ .album] as? ID3FrameWithStringContent)?.content ?? "") as String
+                                    let year = ((id3Tag?.frames[.recordingYear] as? ID3FrameWithIntegerContent)?.value ?? 0) as Int
+                                    let track = ((id3Tag?.frames[.trackPosition] as? ID3FramePartOfTotal)?.part ?? 0) as Int
+                                    let musicTitle = ((id3Tag?.frames[.title] as? ID3FrameWithStringContent)?.content ?? "") as String
+                                    let genre = ((id3Tag?.frames[.genre] as? ID3FrameGenre)?.description ?? "") as String
+                                    let filePath = fileURL.absoluteString
+                                    
+                                    if self.musicDb.AddMusic(filePath: filePath,
+                                                             musicTitle: musicTitle,
+                                                             artist: artist,
+                                                             album: album,
+                                                             year: year,
+                                                             track: track,
+                                                             genre: genre) {
+                                        count += 1
+                                    }
                                 }
-                            }
-                            catch {
-                                print(error)
+                                catch {
+                                    print(error)
+                                }
                             }
                         }
                     }

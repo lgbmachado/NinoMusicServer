@@ -13,9 +13,7 @@ enum ChanelMeter {
     case left
 }
 
-class ViewController: NSViewController {
-    
-    private let updateInterval = 0.05
+class MainViewController: NSViewController {
     
     var musicsListViewModel: MusicsListViewModel?
     
@@ -24,9 +22,8 @@ class ViewController: NSViewController {
     @IBOutlet weak var btnPlayPauseMusic: NSButton!
     @IBOutlet weak var btnStopMusic: NSButton!
     @IBOutlet weak var btnNextMusic: NSButton!
+    @IBOutlet weak var btnEditMusicInfo: NSButtonCell!
     
-    @IBOutlet weak var leftMeter: NSLevelIndicator!
-    @IBOutlet weak var rightMeter: NSLevelIndicator!
     
     var player: AVAudioPlayer?
     private var timer: Timer?
@@ -63,6 +60,14 @@ class ViewController: NSViewController {
             let result = dialog.url
             
             if (result != nil) {
+                
+                let a = DispatchSource.makeMemoryPressureSource(
+                    eventMask: [.warning], queue: .main)
+                a.setEventHandler(handler: {
+                    print("memory warning!")
+                })
+                a.resume()
+                
                 let path: String = result!.path
                 
                 ListFileMusic().loadMusics(path: path) { musicsLoaded in
@@ -95,15 +100,6 @@ class ViewController: NSViewController {
                 player.play()
                 
                 if player.isPlaying {
-                    self.leftMeter.floatValue = 0.0
-                    self.rightMeter.floatValue = 0.0
-                    
-                    timer = Timer.scheduledTimer(timeInterval: updateInterval,
-                                                 target: self,
-                                                 selector: #selector(self.updateMeters),
-                                                 userInfo: nil,
-                                                 repeats: true)
-                    
                     btnPrevMusic.isEnabled = true
                     btnStopMusic.isEnabled = true
                     btnNextMusic.isEnabled = true
@@ -118,36 +114,23 @@ class ViewController: NSViewController {
     @IBAction func stopMusicClick(_ sender: Any) {
         if let player = self.player {
             if player.isPlaying {
-                guard timer != nil, timer!.isValid else {
-                    return
-                }
-                timer?.invalidate()
-                timer = nil
-                
                 player.stop()
                 btnPrevMusic.isEnabled = false
                 btnStopMusic.isEnabled = false
                 btnNextMusic.isEnabled = false
-                
-                self.leftMeter.floatValue = 0.0
-                self.rightMeter.floatValue = 0.0
             }
         }
     }
     
-    @objc private func updateMeters() {
-        if let player = self.player {
-            player.updateMeters()
-            self.leftMeter.floatValue = (player.peakPower(forChannel: 0) + 160.0)
-            self.rightMeter.floatValue = (player.peakPower(forChannel: 1) + 160.0)
-            print(" \(player.peakPower(forChannel: 0))")
+    @IBAction func editMusicInfoClick(_ sender: Any) {
+        if let musicPath = self.musicsListViewModel?.musicAtIndex(self.tableView.selectedRow).filePath {
+            lazy var musicDetailViewController = MusicDetailViewController(musicPath: musicPath)
+            self.presentAsModalWindow(musicDetailViewController)
         }
-        
     }
-    
 }
 
-extension ViewController: NSTableViewDelegate {
+extension MainViewController: NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let currentMusic = self.musicsListViewModel?.musicAtIndex(row)
@@ -193,15 +176,7 @@ extension ViewController: NSTableViewDelegate {
             }
             cellView.textField?.stringValue = currentMusic?.genre ?? ""
             return cellView
-        } else if tableColumn?.identifier == NSUserInterfaceItemIdentifier(rawValue: "idColFile") {
-            guard let cellView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "idCelFile"), owner: self) as? NSTableCellView
-            else {
-                return nil
-            }
-            cellView.textField?.stringValue = currentMusic?.filePath ?? ""
-            return cellView
-        } else {
-            
+        }else {
         }
         return nil
     }
@@ -210,13 +185,15 @@ extension ViewController: NSTableViewDelegate {
         if let rows = self.musicsListViewModel?.numberOfRowsInSection(1) {
             if row >= 0 && row < rows {
                 btnPlayPauseMusic.isEnabled = true
+                btnEditMusicInfo.isEnabled = true
             }
         }
         return true
     }
+    
 }
 
-extension ViewController: NSTableViewDataSource {
+extension MainViewController: NSTableViewDataSource {
     
     func numberOfRows(in tableView: NSTableView) -> Int {
         return self.musicsListViewModel?.numberOfRowsInSection(1) ?? 0

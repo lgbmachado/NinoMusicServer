@@ -51,7 +51,7 @@ class Database {
         var result = false
         
         var queryStatement: OpaquePointer?
-        let sql = "INSERT INTO \(self.tableMusics) (\(self.colFilePath), \(self.colIdArtist), \(self.colTrack), \(self.colIdAlbum), \(self.colTitle), \(self.colIdGenre)) VALUES ('\(filePath)', \(idArtist), \(track), \(idAlbum), '\(musicTitle)', \(idGenre) );"
+        let sql = "INSERT INTO \(self.tableMusics) (\(self.colFilePath), \(self.colIdArtist), \(self.colTrack), \(self.colIdAlbum), \(self.colTitle), \(self.colIdGenre)) VALUES (\"\(filePath)\", \(idArtist), \(track), \(idAlbum), \"\(musicTitle.replacingOccurrences(of: "\"", with: "'"))\", \(idGenre) );"
         if sqlite3_prepare_v2(self.database, sql, -1, &queryStatement, nil) == SQLITE_OK {
             if sqlite3_step(queryStatement) == SQLITE_DONE {
                 result = true
@@ -64,6 +64,7 @@ class Database {
     func listMusics(completion: @escaping ([Music]?) -> ()) {
         let sql = """
         SELECT
+           \(self.tableMusics).\(self.colRowId),
            \(self.tableArtists).\(self.colArtist),
            \(self.tableMusics).\(self.colTitle),
            \(self.tableMusics).\(self.colTrack),
@@ -85,13 +86,14 @@ class Database {
         
         if sqlite3_prepare_v2(self.database, sql, -1, &queryStatement, nil) == SQLITE_OK {
             while(sqlite3_step(queryStatement) == SQLITE_ROW) {
-                let artist = String(cString: sqlite3_column_text(queryStatement, 0))
-                let album = String(cString: sqlite3_column_text(queryStatement, 3))
-                let year = String(cString: sqlite3_column_text(queryStatement, 5))
-                let track = Int(sqlite3_column_int(queryStatement, 2))
-                let musicTitle = String(cString: sqlite3_column_text(queryStatement, 1))
-                let genre = String(cString: sqlite3_column_text(queryStatement, 4))
-                let filePath = String(cString: sqlite3_column_text(queryStatement, 6))
+                let id = String(cString: sqlite3_column_text(queryStatement, 0))
+                let artist = String(cString: sqlite3_column_text(queryStatement, 1))
+                let album = String(cString: sqlite3_column_text(queryStatement, 4))
+                let year = String(cString: sqlite3_column_text(queryStatement, 6))
+                let track = Int(sqlite3_column_int(queryStatement, 3))
+                let musicTitle = String(cString: sqlite3_column_text(queryStatement, 2))
+                let genre = String(cString: sqlite3_column_text(queryStatement, 5))
+                let filePath = String(cString: sqlite3_column_text(queryStatement, 7))
                 
                 musicList.append(Music(artist: artist,
                                        album: album,
@@ -106,6 +108,47 @@ class Database {
         completion(musicList)
     }
     
+    func musicExists(filePath: String) -> Bool {
+        let sql = """
+        SELECT
+           *
+        FROM
+           \(self.tableMusics)
+        WHERE
+           \(self.colFilePath) = \"\(filePath)\"
+        """
+        var queryStatement: OpaquePointer?
+        var count = 0
+        if sqlite3_prepare_v2(self.database, sql, -1, &queryStatement, nil) == SQLITE_OK {
+            while(sqlite3_step(queryStatement) == SQLITE_ROW) {
+                count += 1
+            }
+        }
+        sqlite3_finalize(queryStatement)
+        return count > 0
+    }
+    
+    func getMusicById(id: Int, completion: @escaping (String?) -> ()) {
+        let sql = """
+        SELECT
+           \(self.tableMusics).\(self.colFilePath)
+        FROM
+           \(self.tableMusics)
+        WHERE
+           \(self.colRowId) = \(id)
+        """
+        var queryStatement: OpaquePointer?
+        var result = ""
+        
+        if sqlite3_prepare_v2(self.database, sql, -1, &queryStatement, nil) == SQLITE_OK {
+            while(sqlite3_step(queryStatement) == SQLITE_ROW) {
+                result = String(cString: sqlite3_column_text(queryStatement, 0))
+            }
+        }
+        sqlite3_finalize(queryStatement)
+        completion(result)
+    }
+    
     func closeDatabase() {
         if sqlite3_close(self.database) != SQLITE_OK {
             print("error closing database")
@@ -116,9 +159,9 @@ class Database {
         var queryStatement: OpaquePointer?
         var sql = ""
         if column2 != "" && value2 != "" {
-            sql = "SELECT \(self.colRowId) FROM \(table) WHERE \(column1) = '\(value1)' AND \(column2) = '\(value2)';"
+            sql = "SELECT \(self.colRowId) FROM \(table) WHERE \(column1) = \"\(value1.replacingOccurrences(of: "\"", with: "'"))\" AND \(column2) = \"\(value2.replacingOccurrences(of: "\"", with: "'"))\";"
         } else {
-            sql = "SELECT \(self.colRowId) FROM \(table) WHERE \(column1) = '\(value1)'"
+            sql = "SELECT \(self.colRowId) FROM \(table) WHERE \(column1) = \"\(value1.replacingOccurrences(of: "\"", with: "'"))\""
         }
         var result = 0
         if sqlite3_prepare_v2(self.database, sql, -1, &queryStatement, nil) == SQLITE_OK {
@@ -126,9 +169,9 @@ class Database {
                 result = Int(sqlite3_column_int(queryStatement, 0))
             } else {
                 if column2 != "" && value2 != "" {
-                    sql = "INSERT INTO \(table) (\(column1), \(column2)) VALUES ('\(value1)', '\(value2)');"
+                    sql = "INSERT INTO \(table) (\(column1), \(column2)) VALUES (\"\(value1.replacingOccurrences(of: "\"", with: "'"))\", \"\(value2.replacingOccurrences(of: "\"", with: "'"))\");"
                 } else {
-                    sql = "INSERT INTO \(table) (\(column1)) VALUES ('\(value1)');"
+                    sql = "INSERT INTO \(table) (\(column1)) VALUES (\"\(value1.replacingOccurrences(of: "\"", with: "'"))\");"
                 }
                 if sqlite3_exec(self.database, sql, nil, nil, nil) == SQLITE_OK {
                     result = Int(sqlite3_last_insert_rowid(self.database))
