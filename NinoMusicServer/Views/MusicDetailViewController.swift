@@ -55,6 +55,8 @@ class MusicDetailViewController: NSViewController {
         catch {
             print(error)
         }
+        
+        self.view.window?.center()
     }
     
     @IBAction func cancelButtonClick(_ sender: Any) {

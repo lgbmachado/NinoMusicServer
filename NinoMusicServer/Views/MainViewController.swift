@@ -42,6 +42,7 @@ class MainViewController: NSViewController {
             }
         }
         musicDb.closeDatabase()
+        self.view.window?.center()
     }
     
     private func setup() {
@@ -61,28 +62,30 @@ class MainViewController: NSViewController {
             
             if (result != nil) {
                 
-                let a = DispatchSource.makeMemoryPressureSource(
-                    eventMask: [.warning], queue: .main)
-                a.setEventHandler(handler: {
-                    print("memory warning!")
-                })
-                a.resume()
+                lazy var musicLoadingViewController = MusicLoadingViewController()
                 
-                let path: String = result!.path
-                
-                ListFileMusic().loadMusics(path: path) { musicsLoaded in
-                    if let musicsLoaded = musicsLoaded {
-                        print("👍 \(musicsLoaded) música(s) carregada(s)")
-                        let musicDb = Database(databasePath: "/Users/nino/MusicDatabase.db")
-                        musicDb.listMusics { musicsList in
-                            if let musicsList = musicsList {
-                                self.musicsListViewModel = MusicsListViewModel(musics: musicsList)
-                                self.tableView.reloadData()
+                DispatchQueue.global(qos: .userInitiated).async {
+                    DispatchQueue.main.async {
+                        let path: String = result!.path
+                        
+                        ListFileMusic().loadMusics(path: path) { musicsLoaded in
+                            if let musicsLoaded = musicsLoaded {
+                                musicLoadingViewController.FinishLoad(musicsLoaded: musicsLoaded)
+                                print("👍 \(musicsLoaded) música(s) carregada(s)")
+                                
+                                let musicDb = Database(databasePath: "/Users/nino/MusicDatabase.db")
+                                musicDb.listMusics { musicsList in
+                                    if let musicsList = musicsList {
+                                        self.musicsListViewModel = MusicsListViewModel(musics: musicsList)
+                                        self.tableView.reloadData()
+                                    }
+                                }
+                                musicDb.closeDatabase()
                             }
                         }
-                        musicDb.closeDatabase()
                     }
                 }
+                self.presentAsModalWindow(musicLoadingViewController)
             }
         } else {
             return

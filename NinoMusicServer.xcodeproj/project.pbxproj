@@ -16,6 +16,8 @@
 		3F1C1B0E28F9F4CA00E52238 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1C1B0D28F9F4CA00E52238 /* RegularExpression.swift */; };
 		3F1C1B1028F9F5AC00E52238 /* Data+Append.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1C1B0F28F9F5AC00E52238 /* Data+Append.swift */; };
 		3F7EC5ED2ABB8C6F0019CB54 /* ID3TagEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 3F7EC5EC2ABB8C6F0019CB54 /* ID3TagEditor */; };
+		3F7EC5F02ABC70180019CB54 /* MusicLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7EC5EE2ABC70180019CB54 /* MusicLoadingViewController.swift */; };
+		3F7EC5F12ABC70180019CB54 /* MusicLoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F7EC5EF2ABC70180019CB54 /* MusicLoadingViewController.xib */; };
 		3FA5368128EDCEA2007DBA43 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA5368028EDCEA2007DBA43 /* Database.swift */; };
 		3FBCE76628C19B0900907E83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCE76528C19B0900907E83 /* AppDelegate.swift */; };
 		3FBCE76828C19B0900907E83 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCE76728C19B0900907E83 /* MainViewController.swift */; };
@@ -54,6 +56,8 @@
 		3F1C1B0B28F9F43700E52238 /* String+Html.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Html.swift"; sourceTree = "<group>"; };
 		3F1C1B0D28F9F4CA00E52238 /* RegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularExpression.swift; sourceTree = "<group>"; };
 		3F1C1B0F28F9F5AC00E52238 /* Data+Append.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Append.swift"; sourceTree = "<group>"; };
+		3F7EC5EE2ABC70180019CB54 /* MusicLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MusicLoadingViewController.swift; path = "../../../../.Trash/NinoMusicServer 17.20.36/NinoMusicServer/Views/MusicLoadingViewController.swift"; sourceTree = "<group>"; };
+		3F7EC5EF2ABC70180019CB54 /* MusicLoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MusicLoadingViewController.xib; path = "../../../../.Trash/NinoMusicServer 17.20.36/NinoMusicServer/Views/MusicLoadingViewController.xib"; sourceTree = "<group>"; };
 		3FA5368028EDCEA2007DBA43 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		3FBCE76228C19B0900907E83 /* NinoMusicServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NinoMusicServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FBCE76528C19B0900907E83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				3FBCE76728C19B0900907E83 /* MainViewController.swift */,
+				3F7EC5EE2ABC70180019CB54 /* MusicLoadingViewController.swift */,
+				3F7EC5EF2ABC70180019CB54 /* MusicLoadingViewController.xib */,
 				3FEF4D572AB7E11600B25F83 /* MusicDetailViewController.swift */,
 				3FEF4D582AB7E11600B25F83 /* MusicDetailViewController.xib */,
 			);
@@ -307,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FBCE76A28C19B0C00907E83 /* Assets.xcassets in Resources */,
+				3F7EC5F12ABC70180019CB54 /* MusicLoadingViewController.xib in Resources */,
 				3FBCE76D28C19B0C00907E83 /* Main.storyboard in Resources */,
 				3FEF4D5A2AB7E11600B25F83 /* MusicDetailViewController.xib in Resources */,
 			);
@@ -333,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F7EC5F02ABC70180019CB54 /* MusicLoadingViewController.swift in Sources */,
 				3F12F61B28EA199600290F7B /* MusicsListViewModel.swift in Sources */,
 				3F12F62128EA68AC00290F7B /* ListFileMusic.swift in Sources */,
 				3F12F61928EA198600290F7B /* MusicViewModel.swift in Sources */,
