@@ -5,8 +5,9 @@
 //  Created by Luiz Guilherme Machado on 01/09/22.
 //
 
-import Cocoa
 import AVFAudio
+import Cocoa
+import GCDWebServer
 
 enum ChanelMeter {
     case right
@@ -16,6 +17,7 @@ enum ChanelMeter {
 class MainViewController: NSViewController {
     
     var musicsListViewModel: MusicsListViewModel?
+    var musicLoadingViewController: MusicLoadingViewController?
     
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var btnPrevMusic: NSButton!
@@ -23,6 +25,7 @@ class MainViewController: NSViewController {
     @IBOutlet weak var btnStopMusic: NSButton!
     @IBOutlet weak var btnNextMusic: NSButton!
     @IBOutlet weak var btnEditMusicInfo: NSButtonCell!
+    @IBOutlet weak var txtStatus: NSTextField!
     
     
     var player: AVAudioPlayer?
@@ -34,19 +37,20 @@ class MainViewController: NSViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        updateTableView()
+        self.view.window?.center()
+    }
+    
+    private func updateTableView() {
         let musicDb = Database(databasePath: "/Users/nino/MusicDatabase.db")
         musicDb.listMusics { musicsList in
             if let musicsList = musicsList {
                 self.musicsListViewModel = MusicsListViewModel(musics: musicsList)
+                self.txtStatus.stringValue = "\(musicsList.count) musica(s) disponíveis"
                 self.tableView.reloadData()
             }
         }
         musicDb.closeDatabase()
-        self.view.window?.center()
-    }
-    
-    private func setup() {
-        
     }
     
     @IBAction func openDirClick(_ sender: Any) {
@@ -58,34 +62,28 @@ class MainViewController: NSViewController {
         dialog.canChooseDirectories = true;
         
         if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
-            let result = dialog.url
-            
-            if (result != nil) {
+            if let result = dialog.url {
                 
-                lazy var musicLoadingViewController = MusicLoadingViewController()
+                self.musicLoadingViewController = MusicLoadingViewController()
                 
                 DispatchQueue.global(qos: .userInitiated).async {
-                    DispatchQueue.main.async {
-                        let path: String = result!.path
-                        
-                        ListFileMusic().loadMusics(path: path) { musicsLoaded in
-                            if let musicsLoaded = musicsLoaded {
-                                musicLoadingViewController.FinishLoad(musicsLoaded: musicsLoaded)
-                                print("👍 \(musicsLoaded) música(s) carregada(s)")
-                                
-                                let musicDb = Database(databasePath: "/Users/nino/MusicDatabase.db")
-                                musicDb.listMusics { musicsList in
-                                    if let musicsList = musicsList {
-                                        self.musicsListViewModel = MusicsListViewModel(musics: musicsList)
-                                        self.tableView.reloadData()
-                                    }
-                                }
-                                musicDb.closeDatabase()
+                    let path: String = result.path
+                    
+                    let listMusics = ListFileMusic()
+                    listMusics.delegate = self
+                    
+                    listMusics.loadMusics(path: path) { musicsLoaded in
+                        if let musicsLoaded = musicsLoaded {
+                            DispatchQueue.main.async {
+                                self.musicLoadingViewController?.FinishLoad(musicsLoaded: musicsLoaded)
+                                self.updateTableView()
                             }
                         }
                     }
                 }
-                self.presentAsModalWindow(musicLoadingViewController)
+                if let musicLoadingViewController = self.musicLoadingViewController {
+                    self.presentAsModalWindow(musicLoadingViewController)
+                }
             }
         } else {
             return
@@ -131,6 +129,68 @@ class MainViewController: NSViewController {
             self.presentAsModalWindow(musicDetailViewController)
         }
     }
+    
+    @IBAction func startMusicServerClick(_ sender: Any) {
+        let startServerDlg = NSAlert()
+        startServerDlg.messageText = "Iniciar servidor de música?"
+        startServerDlg.informativeText = "Iniciando o servidor, as músicas ficarão disponíveis em outros dipositivos."
+        startServerDlg.icon = NSImage(named: NSImage.networkName)
+        startServerDlg.addButton(withTitle: "Sim")
+        startServerDlg.addButton(withTitle: "Não")
+        startServerDlg.alertStyle = .informational
+        if startServerDlg.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn {
+            let webServer = GCDWebServer()
+            webServer.addDefaultHandler(forMethod: "GET", request: GCDWebServerRequest.self, processBlock: {request in
+                let arrayParam = request.path.split(separator: "/")
+                let command = arrayParam.first
+                var result = GCDWebServerDataResponse()
+                switch command {
+                case "playMusic":
+                    if arrayParam.count > 1 {
+                        let param = arrayParam[1]
+                        let musicDb = Database(databasePath: "/Users/nino/MusicDatabase.db")
+                        musicDb.getMusicById(id: Int(param) ?? 0, completion: { path in
+                            if let path = (path! as NSString).removingPercentEncoding?.replacingOccurrences(of: "file://", with: "") {
+                                let url = URL(fileURLWithPath: path)
+                                if FileManager.default.fileExists(atPath: url.path) {
+                                    if let handler = FileHandle.init(forReadingAtPath: url.path) {
+                                        result = GCDWebServerDataResponse(data: (handler.readDataToEndOfFile()), contentType: "audio/mpeg")
+                                    } else {
+                                        result = GCDWebServerDataResponse(html: "<html><body><p>ERRO: FALHA AO LER ARQUIVO</p></body></html>")!
+                                    }
+                                } else {
+                                    result = GCDWebServerDataResponse(html: "<html><body><p>ERRO: ARQUIVO NÃO ENCONTRADO</p></body></html>")!
+                                }
+                            }
+                        })
+                    } else {
+                        result = GCDWebServerDataResponse(html: "<html><body><p>ERRO: FALTA PARÂMETRO</p></body></html>")!
+                    }
+                    return result
+                case "listMusic":
+                    var data = Data()
+                    let musicDb = Database(databasePath: "/Users/nino/MusicDatabase.db")
+                    musicDb.listMusicsRemote { musicsList in
+                        if let musicsList = musicsList {
+                            do {
+                                data = try JSONEncoder().encode(musicsList)
+                            } catch {
+                                print(error)
+                            }
+                        }
+                    }
+                    musicDb.closeDatabase()
+                    return GCDWebServerDataResponse(data: data, contentType: "application/json")
+                default:
+                    break
+                }
+                return GCDWebServerDataResponse(html: "<html><body><p>ERRO: COMANDO INVÁLIDO: \"\(request.path)\"</p></body></html>")!
+            })
+            webServer.start(withPort: 8080, bonjourName: "Nino Music Server")
+        }
+        
+    }
+    
 }
 
 extension MainViewController: NSTableViewDelegate {
@@ -194,6 +254,15 @@ extension MainViewController: NSTableViewDelegate {
         return true
     }
     
+}
+
+extension MainViewController: ListFileMusicDelegate {
+    
+    func musicLoading(musicsLoaded: Int) {
+        DispatchQueue.main.async {
+            self.musicLoadingViewController?.updateText(musicsLoaded: musicsLoaded)
+        }
+    }
 }
 
 extension MainViewController: NSTableViewDataSource {

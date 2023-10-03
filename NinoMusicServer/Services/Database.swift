@@ -108,6 +108,51 @@ class Database {
         completion(musicList)
     }
     
+    func listMusicsRemote(completion: @escaping ([MusicRemote]?) -> ()) {
+        let sql = """
+        SELECT
+           \(self.tableMusics).\(self.colRowId),
+           \(self.tableArtists).\(self.colArtist),
+           \(self.tableMusics).\(self.colTitle),
+           \(self.tableMusics).\(self.colTrack),
+           \(self.tableAlbuns).\(self.colAlbum),
+           \(self.tableGenres).\(self.colGenre),
+           \(self.tableAlbuns).\(self.colYear)
+        FROM
+           \(self.tableMusics)
+           INNER JOIN \(self.tableArtists) ON \(self.tableArtists).\(self.colRowId) = \(self.tableMusics).IdArtist
+           INNER JOIN \(self.tableAlbuns) ON \(self.tableAlbuns).\(self.colRowId) = \(self.tableMusics).IdAlbum
+           INNER JOIN \(self.tableGenres) ON \(self.tableGenres).\(self.colRowId) = \(self.tableMusics).IdGenre
+        ORDER BY
+           \(self.tableMusics).\(self.colTitle),
+           \(self.tableArtists).\(self.colArtist)
+        """
+        var queryStatement: OpaquePointer?
+        var musicListRemote = [MusicRemote]()
+        
+        if sqlite3_prepare_v2(self.database, sql, -1, &queryStatement, nil) == SQLITE_OK {
+            while(sqlite3_step(queryStatement) == SQLITE_ROW) {
+                let id = Int(sqlite3_column_int(queryStatement, 0))
+                let artist = String(cString: sqlite3_column_text(queryStatement, 1))
+                let album = String(cString: sqlite3_column_text(queryStatement, 4))
+                let year = String(cString: sqlite3_column_text(queryStatement, 6))
+                let track = Int(sqlite3_column_int(queryStatement, 3))
+                let musicTitle = String(cString: sqlite3_column_text(queryStatement, 2))
+                let genre = String(cString: sqlite3_column_text(queryStatement, 5))
+                
+                musicListRemote.append(MusicRemote(id: id,
+                                                   artist: artist,
+                                                   album: album,
+                                                   year: year,
+                                                   track: track,
+                                                   musicTitle: musicTitle,
+                                                   genre: genre))
+            }
+        }
+        sqlite3_finalize(queryStatement)
+        completion(musicListRemote)
+    }
+    
     func musicExists(filePath: String) -> Bool {
         let sql = """
         SELECT

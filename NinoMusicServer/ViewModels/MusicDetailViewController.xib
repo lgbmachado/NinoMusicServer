@@ -184,7 +184,7 @@
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <size key="minSize" width="316" height="385"/>
-                                <size key="maxSize" width="331" height="10000000"/>
+                                <size key="maxSize" width="316" height="10000000"/>
                                 <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             </textView>
                         </subviews>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F12A05F2AC7682000E9B410 /* MusicLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F12A05D2AC7682000E9B410 /* MusicLoadingViewController.swift */; };
+		3F12A0602AC7682000E9B410 /* MusicLoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F12A05E2AC7682000E9B410 /* MusicLoadingViewController.xib */; };
 		3F12F61928EA198600290F7B /* MusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F12F61828EA198600290F7B /* MusicViewModel.swift */; };
 		3F12F61B28EA199600290F7B /* MusicsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F12F61A28EA199600290F7B /* MusicsListViewModel.swift */; };
 		3F12F61D28EA1A3200290F7B /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F12F61C28EA1A3200290F7B /* Music.swift */; };
@@ -16,18 +18,21 @@
 		3F1C1B0E28F9F4CA00E52238 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1C1B0D28F9F4CA00E52238 /* RegularExpression.swift */; };
 		3F1C1B1028F9F5AC00E52238 /* Data+Append.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1C1B0F28F9F5AC00E52238 /* Data+Append.swift */; };
 		3F7EC5ED2ABB8C6F0019CB54 /* ID3TagEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 3F7EC5EC2ABB8C6F0019CB54 /* ID3TagEditor */; };
-		3F7EC5F02ABC70180019CB54 /* MusicLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7EC5EE2ABC70180019CB54 /* MusicLoadingViewController.swift */; };
-		3F7EC5F12ABC70180019CB54 /* MusicLoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F7EC5EF2ABC70180019CB54 /* MusicLoadingViewController.xib */; };
 		3FA5368128EDCEA2007DBA43 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA5368028EDCEA2007DBA43 /* Database.swift */; };
+		3FAEBC082AC8C864005DB6A0 /* MusicRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAEBC072AC8C864005DB6A0 /* MusicRemote.swift */; };
+		3FB444122ACB65FC00292EB0 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3FB444112ACB65FC00292EB0 /* loading.gif */; };
 		3FBCE76628C19B0900907E83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCE76528C19B0900907E83 /* AppDelegate.swift */; };
 		3FBCE76828C19B0900907E83 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCE76728C19B0900907E83 /* MainViewController.swift */; };
 		3FBCE76A28C19B0C00907E83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FBCE76928C19B0C00907E83 /* Assets.xcassets */; };
-		3FBCE76D28C19B0C00907E83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FBCE76B28C19B0C00907E83 /* Main.storyboard */; };
+		3FBCE76D28C19B0C00907E83 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FBCE76B28C19B0C00907E83 /* MainViewController.storyboard */; };
 		3FBCE77828C19B0C00907E83 /* NinoMusicServerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCE77728C19B0C00907E83 /* NinoMusicServerTests.swift */; };
 		3FBCE78228C19B0C00907E83 /* NinoMusicServerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCE78128C19B0C00907E83 /* NinoMusicServerUITests.swift */; };
 		3FBCE78428C19B0C00907E83 /* NinoMusicServerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCE78328C19B0C00907E83 /* NinoMusicServerUITestsLaunchTests.swift */; };
 		3FEF4D592AB7E11600B25F83 /* MusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FEF4D572AB7E11600B25F83 /* MusicDetailViewController.swift */; };
 		3FEF4D5A2AB7E11600B25F83 /* MusicDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FEF4D582AB7E11600B25F83 /* MusicDetailViewController.xib */; };
+		5431506E4EA13FAE2BD81795 /* Pods_NinoMusicServer_NinoMusicServerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D43F5D41D86B3415800C7C /* Pods_NinoMusicServer_NinoMusicServerUITests.framework */; };
+		7CC53021851610DADDD11128 /* Pods_NinoMusicServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236D249BA8CA7BCC2F2EDC20 /* Pods_NinoMusicServer.framework */; };
+		FBC915B1A3CC5AB675F8EAC7 /* Pods_NinoMusicServerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C3BA06E37F38C47BE0D028 /* Pods_NinoMusicServerTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F55401BB8537BDDEAE8092B /* Pods-NinoMusicServer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NinoMusicServer.release.xcconfig"; path = "Target Support Files/Pods-NinoMusicServer/Pods-NinoMusicServer.release.xcconfig"; sourceTree = "<group>"; };
+		236D249BA8CA7BCC2F2EDC20 /* Pods_NinoMusicServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NinoMusicServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F12A05D2AC7682000E9B410 /* MusicLoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicLoadingViewController.swift; sourceTree = "<group>"; };
+		3F12A05E2AC7682000E9B410 /* MusicLoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicLoadingViewController.xib; sourceTree = "<group>"; };
 		3F12F61828EA198600290F7B /* MusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewModel.swift; sourceTree = "<group>"; };
 		3F12F61A28EA199600290F7B /* MusicsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicsListViewModel.swift; sourceTree = "<group>"; };
 		3F12F61C28EA1A3200290F7B /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
@@ -56,14 +65,14 @@
 		3F1C1B0B28F9F43700E52238 /* String+Html.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Html.swift"; sourceTree = "<group>"; };
 		3F1C1B0D28F9F4CA00E52238 /* RegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularExpression.swift; sourceTree = "<group>"; };
 		3F1C1B0F28F9F5AC00E52238 /* Data+Append.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Append.swift"; sourceTree = "<group>"; };
-		3F7EC5EE2ABC70180019CB54 /* MusicLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MusicLoadingViewController.swift; path = "../../../../.Trash/NinoMusicServer 17.20.36/NinoMusicServer/Views/MusicLoadingViewController.swift"; sourceTree = "<group>"; };
-		3F7EC5EF2ABC70180019CB54 /* MusicLoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MusicLoadingViewController.xib; path = "../../../../.Trash/NinoMusicServer 17.20.36/NinoMusicServer/Views/MusicLoadingViewController.xib"; sourceTree = "<group>"; };
 		3FA5368028EDCEA2007DBA43 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		3FAEBC072AC8C864005DB6A0 /* MusicRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicRemote.swift; sourceTree = "<group>"; };
+		3FB444112ACB65FC00292EB0 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		3FBCE76228C19B0900907E83 /* NinoMusicServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NinoMusicServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FBCE76528C19B0900907E83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FBCE76728C19B0900907E83 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3FBCE76928C19B0C00907E83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3FBCE76C28C19B0C00907E83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3FBCE76C28C19B0C00907E83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainViewController.storyboard; sourceTree = "<group>"; };
 		3FBCE76E28C19B0C00907E83 /* NinoMusicServer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NinoMusicServer.entitlements; sourceTree = "<group>"; };
 		3FBCE77328C19B0C00907E83 /* NinoMusicServerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NinoMusicServerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FBCE77728C19B0C00907E83 /* NinoMusicServerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NinoMusicServerTests.swift; sourceTree = "<group>"; };
@@ -72,6 +81,13 @@
 		3FBCE78328C19B0C00907E83 /* NinoMusicServerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NinoMusicServerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3FEF4D572AB7E11600B25F83 /* MusicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDetailViewController.swift; sourceTree = "<group>"; };
 		3FEF4D582AB7E11600B25F83 /* MusicDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicDetailViewController.xib; sourceTree = "<group>"; };
+		62F01B277DD6224745317723 /* Pods-NinoMusicServer-NinoMusicServerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NinoMusicServer-NinoMusicServerUITests.release.xcconfig"; path = "Target Support Files/Pods-NinoMusicServer-NinoMusicServerUITests/Pods-NinoMusicServer-NinoMusicServerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		68CE6690829067B62F0CCAAC /* Pods-NinoMusicServer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NinoMusicServer.debug.xcconfig"; path = "Target Support Files/Pods-NinoMusicServer/Pods-NinoMusicServer.debug.xcconfig"; sourceTree = "<group>"; };
+		81D43F5D41D86B3415800C7C /* Pods_NinoMusicServer_NinoMusicServerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NinoMusicServer_NinoMusicServerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C069DCAAEA77698EE77C2EBE /* Pods-NinoMusicServerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NinoMusicServerTests.release.xcconfig"; path = "Target Support Files/Pods-NinoMusicServerTests/Pods-NinoMusicServerTests.release.xcconfig"; sourceTree = "<group>"; };
+		E0EC4A282C537DF9B477CA5A /* Pods-NinoMusicServerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NinoMusicServerTests.debug.xcconfig"; path = "Target Support Files/Pods-NinoMusicServerTests/Pods-NinoMusicServerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E6C3BA06E37F38C47BE0D028 /* Pods_NinoMusicServerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NinoMusicServerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA7F8F44316322FD1DB85E1E /* Pods-NinoMusicServer-NinoMusicServerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NinoMusicServer-NinoMusicServerUITests.debug.xcconfig"; path = "Target Support Files/Pods-NinoMusicServer-NinoMusicServerUITests/Pods-NinoMusicServer-NinoMusicServerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F7EC5ED2ABB8C6F0019CB54 /* ID3TagEditor in Frameworks */,
+				7CC53021851610DADDD11128 /* Pods_NinoMusicServer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBC915B1A3CC5AB675F8EAC7 /* Pods_NinoMusicServerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,18 +112,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5431506E4EA13FAE2BD81795 /* Pods_NinoMusicServer_NinoMusicServerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24A68B139CA7FE8FEB3323E7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				236D249BA8CA7BCC2F2EDC20 /* Pods_NinoMusicServer.framework */,
+				81D43F5D41D86B3415800C7C /* Pods_NinoMusicServer_NinoMusicServerUITests.framework */,
+				E6C3BA06E37F38C47BE0D028 /* Pods_NinoMusicServerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3F12F61428EA18A400290F7B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3F12A05D2AC7682000E9B410 /* MusicLoadingViewController.swift */,
+				3F12A05E2AC7682000E9B410 /* MusicLoadingViewController.xib */,
 				3FBCE76728C19B0900907E83 /* MainViewController.swift */,
-				3F7EC5EE2ABC70180019CB54 /* MusicLoadingViewController.swift */,
-				3F7EC5EF2ABC70180019CB54 /* MusicLoadingViewController.xib */,
+				3FBCE76B28C19B0C00907E83 /* MainViewController.storyboard */,
 				3FEF4D572AB7E11600B25F83 /* MusicDetailViewController.swift */,
 				3FEF4D582AB7E11600B25F83 /* MusicDetailViewController.xib */,
 			);
@@ -125,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				3F12F61C28EA1A3200290F7B /* Music.swift */,
+				3FAEBC072AC8C864005DB6A0 /* MusicRemote.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -156,6 +187,8 @@
 				3FBCE77628C19B0C00907E83 /* NinoMusicServerTests */,
 				3FBCE78028C19B0C00907E83 /* NinoMusicServerUITests */,
 				3FBCE76328C19B0900907E83 /* Products */,
+				CD64FA50C3DC9BA8E9A5EB07 /* Pods */,
+				24A68B139CA7FE8FEB3323E7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -172,6 +205,7 @@
 		3FBCE76428C19B0900907E83 /* NinoMusicServer */ = {
 			isa = PBXGroup;
 			children = (
+				3FB444112ACB65FC00292EB0 /* loading.gif */,
 				3F1C1B0428F9EE4A00E52238 /* Utils */,
 				3F12F61728EA18E700290F7B /* Services */,
 				3F12F61628EA18D300290F7B /* Models */,
@@ -179,7 +213,6 @@
 				3F12F61428EA18A400290F7B /* Views */,
 				3FBCE76528C19B0900907E83 /* AppDelegate.swift */,
 				3FBCE76928C19B0C00907E83 /* Assets.xcassets */,
-				3FBCE76B28C19B0C00907E83 /* Main.storyboard */,
 				3FBCE76E28C19B0C00907E83 /* NinoMusicServer.entitlements */,
 			);
 			path = NinoMusicServer;
@@ -202,6 +235,19 @@
 			path = NinoMusicServerUITests;
 			sourceTree = "<group>";
 		};
+		CD64FA50C3DC9BA8E9A5EB07 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				68CE6690829067B62F0CCAAC /* Pods-NinoMusicServer.debug.xcconfig */,
+				1F55401BB8537BDDEAE8092B /* Pods-NinoMusicServer.release.xcconfig */,
+				FA7F8F44316322FD1DB85E1E /* Pods-NinoMusicServer-NinoMusicServerUITests.debug.xcconfig */,
+				62F01B277DD6224745317723 /* Pods-NinoMusicServer-NinoMusicServerUITests.release.xcconfig */,
+				E0EC4A282C537DF9B477CA5A /* Pods-NinoMusicServerTests.debug.xcconfig */,
+				C069DCAAEA77698EE77C2EBE /* Pods-NinoMusicServerTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -209,9 +255,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3FBCE78728C19B0C00907E83 /* Build configuration list for PBXNativeTarget "NinoMusicServer" */;
 			buildPhases = (
+				3ABCFA6CEEB4E7E713BF654B /* [CP] Check Pods Manifest.lock */,
 				3FBCE75E28C19B0900907E83 /* Sources */,
 				3FBCE75F28C19B0900907E83 /* Frameworks */,
 				3FBCE76028C19B0900907E83 /* Resources */,
+				796DF9BABA6FE3F4030D72AF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -229,6 +277,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3FBCE78A28C19B0C00907E83 /* Build configuration list for PBXNativeTarget "NinoMusicServerTests" */;
 			buildPhases = (
+				14392AA92D43B181AF8FA5B3 /* [CP] Check Pods Manifest.lock */,
 				3FBCE76F28C19B0C00907E83 /* Sources */,
 				3FBCE77028C19B0C00907E83 /* Frameworks */,
 				3FBCE77128C19B0C00907E83 /* Resources */,
@@ -247,9 +296,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3FBCE78D28C19B0C00907E83 /* Build configuration list for PBXNativeTarget "NinoMusicServerUITests" */;
 			buildPhases = (
+				72083F37E60DCC368E9E0664 /* [CP] Check Pods Manifest.lock */,
 				3FBCE77928C19B0C00907E83 /* Sources */,
 				3FBCE77A28C19B0C00907E83 /* Frameworks */,
 				3FBCE77B28C19B0C00907E83 /* Resources */,
+				E3047698B2C2F9FC23C9CC70 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -313,8 +364,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FBCE76A28C19B0C00907E83 /* Assets.xcassets in Resources */,
-				3F7EC5F12ABC70180019CB54 /* MusicLoadingViewController.xib in Resources */,
-				3FBCE76D28C19B0C00907E83 /* Main.storyboard in Resources */,
+				3F12A0602AC7682000E9B410 /* MusicLoadingViewController.xib in Resources */,
+				3FB444122ACB65FC00292EB0 /* loading.gif in Resources */,
+				3FBCE76D28C19B0C00907E83 /* MainViewController.storyboard in Resources */,
 				3FEF4D5A2AB7E11600B25F83 /* MusicDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,12 +387,116 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		14392AA92D43B181AF8FA5B3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NinoMusicServerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3ABCFA6CEEB4E7E713BF654B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NinoMusicServer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72083F37E60DCC368E9E0664 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NinoMusicServer-NinoMusicServerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		796DF9BABA6FE3F4030D72AF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NinoMusicServer/Pods-NinoMusicServer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NinoMusicServer/Pods-NinoMusicServer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NinoMusicServer/Pods-NinoMusicServer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3047698B2C2F9FC23C9CC70 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NinoMusicServer-NinoMusicServerUITests/Pods-NinoMusicServer-NinoMusicServerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NinoMusicServer-NinoMusicServerUITests/Pods-NinoMusicServer-NinoMusicServerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NinoMusicServer-NinoMusicServerUITests/Pods-NinoMusicServer-NinoMusicServerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3FBCE75E28C19B0900907E83 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F7EC5F02ABC70180019CB54 /* MusicLoadingViewController.swift in Sources */,
+				3F12A05F2AC7682000E9B410 /* MusicLoadingViewController.swift in Sources */,
+				3FAEBC082AC8C864005DB6A0 /* MusicRemote.swift in Sources */,
 				3F12F61B28EA199600290F7B /* MusicsListViewModel.swift in Sources */,
 				3F12F62128EA68AC00290F7B /* ListFileMusic.swift in Sources */,
 				3F12F61928EA198600290F7B /* MusicViewModel.swift in Sources */,
@@ -389,12 +545,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3FBCE76B28C19B0C00907E83 /* Main.storyboard */ = {
+		3FBCE76B28C19B0C00907E83 /* MainViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				3FBCE76C28C19B0C00907E83 /* Base */,
 			);
-			name = Main.storyboard;
+			name = MainViewController.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -515,6 +671,7 @@
 		};
 		3FBCE78828C19B0C00907E83 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68CE6690829067B62F0CCAAC /* Pods-NinoMusicServer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -528,8 +685,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSMainStoryboardFile = MainViewController;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				INFOPLIST_KEY_UILaunchStoryboardName = MainViewController.storyboard;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -544,6 +702,7 @@
 		};
 		3FBCE78928C19B0C00907E83 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F55401BB8537BDDEAE8092B /* Pods-NinoMusicServer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -557,8 +716,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSMainStoryboardFile = MainViewController;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				INFOPLIST_KEY_UILaunchStoryboardName = MainViewController.storyboard;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -573,6 +733,7 @@
 		};
 		3FBCE78B28C19B0C00907E83 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0EC4A282C537DF9B477CA5A /* Pods-NinoMusicServerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -592,6 +753,7 @@
 		};
 		3FBCE78C28C19B0C00907E83 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C069DCAAEA77698EE77C2EBE /* Pods-NinoMusicServerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -611,6 +773,7 @@
 		};
 		3FBCE78E28C19B0C00907E83 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA7F8F44316322FD1DB85E1E /* Pods-NinoMusicServer-NinoMusicServerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -628,6 +791,7 @@
 		};
 		3FBCE78F28C19B0C00907E83 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62F01B277DD6224745317723 /* Pods-NinoMusicServer-NinoMusicServerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

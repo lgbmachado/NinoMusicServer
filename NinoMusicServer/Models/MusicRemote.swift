@@ -1,18 +1,18 @@
 //
-//  Music.swift
+//  MusicRemote.swift
 //  NinoMusicServer
 //
-//  Created by Luiz Guilherme Machado on 02/10/22.
+//  Created by Luiz Guilherme Machado on 30/09/23.
 //
 
 import Foundation
 
-struct Music{
+struct MusicRemote: Encodable{
+    let id: Int?
     let artist: String?
     let album: String?
     let year: String?
     let track: Int?
     let musicTitle: String?
     let genre: String?
-    let filePath: String?
 }
